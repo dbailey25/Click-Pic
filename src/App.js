@@ -13,7 +13,8 @@ class App extends Component {
     pics,
     // clicked,
     score: 0,
-    topScore: 0
+    topScore: 0,
+    result: 'win'
   };
   picsClicked = [];
   clickResult = '';
@@ -44,13 +45,15 @@ console.log('randomIndex', randomIndex);
     // if the clicked pic was clicked before...
     if (this.picsClicked.includes(id)) {
       this.clickResult = 'Sorry, you clicked that one already.';
-      this.setState({ score: 0 });
+      this.setState({
+        score: 0,
+        result: 'fail'
+      });
       if (this.picsClicked.length > this.state.topScore) {
         this.setState({ topScore: this.picsClicked.length });
       }
       this.picsClicked = [];
-
-          }
+    }
     // if the clicked pic wasn't clicked before...
     else {
       let random = Math.floor(Math.random() * this.clickWinMessages.length);
@@ -63,7 +66,10 @@ console.log('newScore', newScore);
       // const clicked = id;
       // this.setState({ clicked });
       this.picsClicked.push(id);
-      this.setState({ score: newScore })
+      this.setState({
+        score: newScore,
+        result: 'win'
+       })
     };
   };
 
@@ -124,6 +130,9 @@ console.log('newScore', newScore);
         />
         <Message
           message={this.clickResult}
+          result={this.state.result}
+          className={`message ${this.state.result}`}
+
         />
         {this.state.pics.map(pic => (
           <Pic

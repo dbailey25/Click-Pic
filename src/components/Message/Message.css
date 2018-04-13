@@ -3,3 +3,11 @@
   width: 100%;
   height: 24px;
 }
+
+.win {
+  color: #00b50e;
+}
+
+.fail {
+  color: #db0202;
+}
