@@ -58,7 +58,7 @@ class App extends Component {
   // };
 
   clickIt = (id, array) => {
-    this.clickResult = ''
+    this.clickResult = ""
   // Record the Score
     // if the clicked pic was clicked before...
     if (this.picsClicked.includes(id)) {
