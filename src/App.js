@@ -62,22 +62,23 @@ class App extends Component {
   // Record the Score
     // if the clicked pic was clicked before...
     if (this.picsClicked.includes(id)) {
-      console.log('click: fail');
-      this.clickResult = 'Sorry, you clicked it already';
+console.log('click: fail');
+      this.clickResult = 'Sorry, you clicked it already!';
       this.setState({ score: 0 });
       this.setState({ topScore: this.picsClicked.length });
       this.picsClicked = [];
     }
     // if the clicked pic wasn't clicked before...
     else {
-      console.log('click: win');
+      this.clickResult = 'Good click! +1';
+console.log('click: win');
       let score = this.state.score;
-      let newScore = score;
+console.log('score', score);
+      let newScore = score + 1;
+console.log('newScore', newScore);
       // const clicked = id;
       // this.setState({ clicked });
       this.picsClicked.push(id);
-      newScore = score++;
-      console.log('newScore', newScore);
       this.setState({ score: newScore })
     };
 
