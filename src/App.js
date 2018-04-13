@@ -17,6 +17,8 @@ class App extends Component {
   };
   picsClicked = [];
   clickResult = '';
+  clickWinMessages = ["Good clicking!", 'Great job!', 'Sweet!', 'Nice one!', 'Schwing!', 'Boom!', "That's it!", 'Huzzah!', 'There it is!', 'Do that again!', 'Memory master!', 'Bingo!'];
+  // clickWin = this.clickWinMessages[];
 
 //   shuffleIndexes = array => {
 //     const pics = array;
@@ -58,7 +60,6 @@ class App extends Component {
   // };
 
   clickIt = (id, array) => {
-    this.clickResult = ""
   // Record the Score
     // if the clicked pic was clicked before...
     if (this.picsClicked.includes(id)) {
@@ -70,7 +71,8 @@ console.log('click: fail');
     }
     // if the clicked pic wasn't clicked before...
     else {
-      this.clickResult = 'Good click! +1';
+      let random = Math.floor(Math.random() * this.clickWinMessages.length);
+      this.clickResult = `${this.clickWinMessages[random]} +1`;
 console.log('click: win');
       let score = this.state.score;
 console.log('score', score);
