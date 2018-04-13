@@ -5,7 +5,7 @@ import "./Pic.css";
 const Pic = props => (
   <div className="card">
     <div className="img-container">
-      <img alt={props.name} src={props.image} onClick={() => props.shuffle(props.friends)}/>
+      <img alt={props.id} src={props.image} onClick={() => props.clickIt(props.id, props.pics)}/>
     </div>
   </div>
 );
