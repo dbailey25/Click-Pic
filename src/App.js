@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PicCard from "./components/PicCard";
+import Pic from "./components/Pic";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
@@ -12,7 +12,6 @@ class App extends Component {
     score: 0,
     topScore: 0
   };
-
 
 
 
@@ -49,8 +48,9 @@ class App extends Component {
           score={`Score: ${this.state.score} | Top Score:${this.state.topScore}`}
         />
         {this.state.friends.map(friend => (
-          <PicCard
-            shuffle={this.shuffle}
+          <Pic
+            friends = {this.state.friends}
+            shuffle={this.shuffleIndexes}
             id={friend.id}
             key={friend.id}
             image={friend.image}
