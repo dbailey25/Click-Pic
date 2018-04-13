@@ -131,13 +131,10 @@ console.log('newScore', newScore);
         <Message
           message={this.clickResult}
           result={this.state.result}
-          className={`message ${this.state.result}`}
-
         />
         {this.state.pics.map(pic => (
           <Pic
             pics = {this.state.pics}
-            /*clickIt={this.clickIt}*/
             score={this.recordScore}
             shuffle={this.shuffleIndexes}
             id={pic.id}
