@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PicCard from "./components/PicCard";
-import Main from "./components/Main";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
@@ -42,23 +41,22 @@ class App extends Component {
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
-      <Main>
+
+      <Wrapper>
         <Title
           main="Click-A-Pic"
           sub="Click a pic to score; click the same one twice and you lose!"
-          score={`Score: ${this.state.score} | Top Score: ${this.state.topScore}`}
+          score={`Score: ${this.state.score} | Top Score:${this.state.topScore}`}
         />
-        <Wrapper>
-          {this.state.friends.map(friend => (
-            <PicCard
-              shuffle={this.shuffle}
-              id={friend.id}
-              key={friend.id}
-              image={friend.image}
-            />
-          ))}
-        </Wrapper>
-      </Main>
+        {this.state.friends.map(friend => (
+          <PicCard
+            shuffle={this.shuffle}
+            id={friend.id}
+            key={friend.id}
+            image={friend.image}
+          />
+        ))}
+      </Wrapper>
     );
   }
 }
