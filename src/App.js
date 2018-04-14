@@ -19,7 +19,6 @@ class App extends Component {
   picsClicked = [];
   clickResult = '';
   clickWinMessages = ["Good clicking!", 'Great job!', 'Sweet!', 'Nice one!', 'Schwing!', 'Boom!', "That's it!", 'Huzzah!', 'There it is!', 'Do that again!', 'Memory master!', 'Bingo!'];
-  // clickWin = this.clickWinMessages[];
 
   shuffleIndexes = array => {
     const pics = array;
@@ -30,7 +29,6 @@ console.log('currentIndex', currentIndex);
 
       // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
-console.log('randomIndex', randomIndex);
       currentIndex -= 1;
 
       // And swap it with the current element.
@@ -64,10 +62,13 @@ console.log('score', score);
       let newScore = score + 1;
       if (newScore === 12) {
         this.clickResult = "Amazing, you just got a perfect score!";
+        this.picsClicked.push(id);
         this.setState({
           score: newScore,
           result: 'perfect'
          })
+         this.setState({ topScore: this.picsClicked.length });
+         this.picsClicked = [];
       }
       else {
         this.picsClicked.push(id);
@@ -79,52 +80,7 @@ console.log('score', score);
     };
   };
 
-//   clickIt = (id, array) => {
-//   // Record the Score
-    // if the clicked pic was clicked before...
-//     if (this.picsClicked.includes(id)) {
-// console.log('click: fail');
-//       this.clickResult = 'Sorry, you clicked it already!';
-//       this.setState({ score: 0 });
-//       this.setState({ topScore: this.picsClicked.length });
-//       this.picsClicked = [];
-//     }
-//     // if the clicked pic wasn't clicked before...
-//     else {
-//       let random = Math.floor(Math.random() * this.clickWinMessages.length);
-//       this.clickResult = `${this.clickWinMessages[random]} +1`;
-// console.log('click: win');
-//       let score = this.state.score;
-// console.log('score', score);
-//       let newScore = score + 1;
-// console.log('newScore', newScore);
-//       // const clicked = id;
-//       // this.setState({ clicked });
-//       this.picsClicked.push(id);
-//       this.setState({ score: newScore })
-//     };
-//
-//   // Shuffle the pictures
-//   const pics = array;
-//   let currentIndex = pics.length, temporaryValue, randomIndex;
-// // console.log('currentIndex', currentIndex);
-//   // While there are elements to shuffle...
-//   while (currentIndex !== 0) {
-//
-//     // Pick a remaining element...
-//     randomIndex = Math.floor(Math.random() * currentIndex);
-// // console.log('randomIndex', randomIndex);
-//     currentIndex -= 1;
-//
-//     // And swap it with the current element.
-//     temporaryValue = pics[currentIndex];
-//     pics[currentIndex] = pics[randomIndex];
-//     pics[randomIndex] = temporaryValue;
-//   };
-//   this.setState({ pics });
-//   };
-
-  // Map over this.state.pics and render a Pic component for each friend object
+  // Map over this.state.pics and render a Pic component for each picture
   render() {
     return (
 
