@@ -62,14 +62,20 @@ console.log('click: win');
       let score = this.state.score;
 console.log('score', score);
       let newScore = score + 1;
-console.log('newScore', newScore);
-      // const clicked = id;
-      // this.setState({ clicked });
-      this.picsClicked.push(id);
-      this.setState({
-        score: newScore,
-        result: 'win'
-       })
+      if (newScore === 12) {
+        this.clickResult = "Amazing, you just got a perfect score!";
+        this.setState({
+          score: newScore,
+          result: 'perfect'
+         })
+      }
+      else {
+        this.picsClicked.push(id);
+        this.setState({
+          score: newScore,
+          result: 'win'
+         })
+      }
     };
   };
 
